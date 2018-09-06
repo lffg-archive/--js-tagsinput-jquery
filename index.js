@@ -68,10 +68,11 @@ $('[data-toggle="tagsinput"]').each(function (i, el) {
     // XSS-free:
     value = $('<span>').text(value).html().trim();
     var $tag = $(config.tagTemplate.replace(/\${value}/g, value))
-      .attr('data--value', value);
+      .attr('data--value', value)
+      .attr('data--l-value', value.toLowerCase());
 
     if (! value) return;
-    var $possible = $tagsZone.children('[data--value="' + value + '"]')
+    var $possible = $tagsZone.children('[data--l-value="' + value.toLowerCase() + '"]');
 
     // If the tag already exists:
     if ($possible.length) {
